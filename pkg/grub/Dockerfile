@@ -1,6 +1,7 @@
 ARG EVE_BUILDER_IMAGE=lfedge/eve-alpine:6.7.0
+ARG EVE_BUILDER_PLATFORM=linux/amd64
 # hadolint ignore=DL3006
-FROM ${EVE_BUILDER_IMAGE} as grub-build
+FROM --platform=${EVE_BUILDER_PLATFORM} ${EVE_BUILDER_IMAGE} as grub-build
 
 # hadolint ignore=DL3018
 RUN apk add --no-cache \

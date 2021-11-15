@@ -35,8 +35,9 @@ jobs:
              make LINUXKIT_VERSION=master LINUXKIT_SOURCE=https://github.com/rvs/linuxkit.git linuxkit
              # constraining environment for riscv64 builds
              TAG=lfedge/eve-alpine:81e6520f4f1554789eb1ac299168e72ac37d88e2-riscv64
+             PLATFORM=linux/riscv64
              echo "ZARCH=riscv64" >> "$GITHUB_ENV"
-             echo 'LK_BUILD_ARGS={"EVE_BUILDER_IMAGE":"'$TAG\"} >> "$GITHUB_ENV"
+             echo 'LK_BUILD_ARGS={"EVE_BUILDER_IMAGE":"'$TAG\", "EVE_BUILDER_PLATFORM":"'$PLATFORM\"} >> "$GITHUB_ENV"
           fi
           echo "ARCH=$(uname -m | sed -e 's/x86_64/amd64/' -e 's/aarch64/arm64/')" >> "$GITHUB_ENV"
           echo "TAG=$(echo "$REF" | sed -e 's#^.*/##' -e 's#master#snapshot#' -e 's#main#snapshot#')" >> "$GITHUB_ENV"
